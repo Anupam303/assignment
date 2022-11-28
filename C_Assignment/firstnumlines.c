@@ -2,24 +2,24 @@
 #include<stdlib.h>
 
 char ** firstnumlines(FILE * inputfp, unsigned int num){
-	int max = 0;
 	char ** headbuf = (char **)calloc(num, sizeof(char *));
 
 	for(int i=0;i<num;i++){
 		headbuf[i] = (char * ) calloc(255, sizeof(char));
-		fscanf(inputfp,"%s",headbuf[i]);
+		fgets(headbuf[i],255,inputfp);
 	}
 	return headbuf;
 }
 
 
 int main() {
-	int num = 10;
+	int num;
+	scanf("%d", &num);
 	FILE * fp = fopen("input.txt", "r");
-	char ** firstlines = firstnumlines(fp, 10);
-	for(int i = 0; i < 10; i++){
+	char ** firstlines = firstnumlines(fp, num);
+	for(int i = 0; i < num; i++){
 		if(firstlines[i] != NULL){
-			printf("%s\n", firstlines[i]);
+			printf("%s", firstlines[i]);
 		}
 	}
 	fclose(fp);
