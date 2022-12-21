@@ -44,7 +44,7 @@ char ** lastnumlines(FILE * inputfp, unsigned int num)
 
   //Copy the input value from temporary array to tailbuf
   for(int i = end-1; i < num; i++){
-	  strcpy(tailbuf[start],arr[i]);   //strcpy because by using this the value is copied from temp without changing the address that                                              tailbuf points to and if we use assignment operator we are changing the address that tailbuf 						 was initially pointing to and if we free the memory of the temporary array then tailbuf will 						   not have any address that it points to which will give us an error if we try to access that                                               memory and will also cause memory leak because we will not be able to access the original                                                 memory dynamically allocated to tailbuf using calloc.
+	  strcpy(tailbuf[start],arr[i]);   //strcpy because by using this the value is copied from temp without changing the address that                                              tailbuf points to and if we use assignment operator we are changing the address that tailbuf 						 was initially pointing to and if we free the memory of the temporary array then tailbuf will 						   not have any address that it points to which will give us an error if we try to access that                                               memory and will also cause memory leak because we will not be able to access the original                                                 memory dynamically allocated to tailbuf using calloc and by using strcpy we have access to                                                both blocks of memory address.
 	  start++;
   }
   for(int i = 0; i < end-1; i++){
